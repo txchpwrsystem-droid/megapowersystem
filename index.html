@@ -1,0 +1,118 @@
+```html id="pro_mps_code"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Power System (MPS)</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#0f172a;color:white;}
+header{display:flex;justify-content:space-between;padding:15px 30px;background:#020617;}
+.logo{color:#22c55e;font-weight:bold;font-size:22px;}
+nav a{color:white;margin:0 10px;text-decoration:none;}
+.cart{background:#22c55e;padding:6px 12px;border-radius:6px;cursor:pointer;}
+.hero{text-align:center;padding:50px;}
+.products{padding:30px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.card{background:#1e293b;padding:15px;border-radius:10px;}
+.price{color:#22c55e;font-weight:bold;}
+button{background:#22c55e;border:none;padding:10px;width:100%;margin-top:10px;border-radius:6px;cursor:pointer;}
+.cart-box{position:fixed;right:10px;top:70px;background:#020617;padding:15px;border-radius:10px;width:260px;display:none;}
+footer{text-align:center;padding:20px;background:#020617;margin-top:40px;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:12px;border-radius:50%;cursor:pointer;}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">⚡ Mega Power System (MPS)</div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">Contact</a>
+</nav>
+<div class="cart" onclick="toggleCart()">Cart 🛒 (<span id="count">0</span>)</div>
+</header>
+
+<div class="cart-box" id="cartBox">
+<h3>Your Cart</h3>
+<ul id="cartItems"></ul>
+<p>Total: ₹<span id="total">0</span></p>
+<button onclick="orderWhatsApp()">Order on WhatsApp</button>
+</div>
+
+<section class="hero">
+<h1>Welcome to Mega Power System</h1>
+<p>Owner: Syed Mohammad Ali</p>
+</section>
+
+<section class="products">
+<h2>Our Products</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>LED Bulb</h3>
+<p class="price">₹120</p>
+<button onclick="addToCart('LED Bulb',120)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Electric Fan</h3>
+<p class="price">₹1499</p>
+<button onclick="addToCart('Electric Fan',1499)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Power Bank</h3>
+<p class="price">₹899</p>
+<button onclick="addToCart('Power Bank',899)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>USB Charger</h3>
+<p class="price">₹299</p>
+<button onclick="addToCart('USB Charger',299)">Add to Cart</button>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Mega Power System (MPS) | Owner: Syed Mohammad Ali
+</footer>
+
+<div class="whatsapp" onclick="orderWhatsApp()">📲</div>
+
+<script>
+let cart=[];
+let total=0;
+
+function addToCart(name,price){
+cart.push(name+" ₹"+price);
+total+=price;
+
+document.getElementById("count").innerText=cart.length;
+document.getElementById("total").innerText=total;
+
+let li=document.createElement("li");
+li.innerText=name+" ₹"+price;
+document.getElementById("cartItems").appendChild(li);
+}
+
+function toggleCart(){
+let box=document.getElementById("cartBox");
+box.style.display=box.style.display==="none"?"block":"none";
+}
+
+function orderWhatsApp(){
+let msg="Order:%0A"+cart.join("%0A")+"%0ATotal: ₹"+total;
+window.open("https://wa.me/91XXXXXXXXXX?text="+msg);
+}
+</script>
+
+</body>
+</html>
+```
